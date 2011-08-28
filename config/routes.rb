@@ -1,8 +1,10 @@
 Accounts::Application.routes.draw do
   resources :contacts, :categories
 
-  resources :purchase_invoices do
-    resources :line_items, :only => [ :new ]
+  [:purchase_invoices, :sales_invoices].each do |invoice_type|
+    resources invoice_type do
+      resources :line_items, :only => [ :new ]
+    end
   end
 
   resources :line_items

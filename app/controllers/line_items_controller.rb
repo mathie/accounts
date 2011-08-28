@@ -32,6 +32,13 @@ class LineItemsController < ApplicationController
   end
 
   def parent_resource
-    @parent_resource ||= PurchaseInvoice.find(params[:purchase_invoice_id])
+    @parent_resource ||= case
+    when params[:purchase_invoice_id].present?
+      PurchaseInvoice.find(params[:purchase_invoice_id])
+    when params[:sales_invoice_id].present?
+      SalesInvoice.find(params[:sales_invoice_id])
+    else
+      raise "Can't figure out the parent resource to create a line item for"
+    end
   end
 end

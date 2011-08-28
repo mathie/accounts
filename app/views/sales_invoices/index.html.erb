@@ -1,0 +1,5 @@
+<h1>Sales Invoices</h1>
+
+<%= render 'invoices/table', invoices: @sales_invoices %>
+
+<p><%= link_to 'Create a new sales invoice', new_sales_invoice_path, class: 'btn large primary' %></p>
