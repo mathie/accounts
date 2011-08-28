@@ -1,0 +1,23 @@
+<%= form_for line_item do |f| %>
+  <%= f.hidden_field :invoice_id %>
+
+  <div class="clearfix">
+    <%= f.label :category_id %>
+    <div class="input">
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+    </div>
+  </div>
+  <%= form_text_input f, :text_field, :quantity, autofocus: true, class: 'xlarge', size: 30 %>
+  <%= form_text_input f, :text_field, :unit_price, class: 'xlarge', size: 30 %>
+  <div class="clearfix">
+    <%= f.label :vat_rate_percentage %>
+    <div class="input">
+      <%= f.select :vat_rate_percentage, LineItem::VAT_RATES.map { |rate| [number_to_percentage(rate, strip_insignificant_zeros: true), rate] } %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit line_item.new_record? ? "Create line item" : "Update line item", class: 'btn primary' %>
+    <%= link_to 'Cancel', line_item.invoice, class: 'btn' %>
+  </div>
+<% end %>

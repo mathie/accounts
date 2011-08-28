@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828192636) do
+ActiveRecord::Schema.define(:version => 20110828204945) do
 
   create_table "categories", :force => true do |t|
     t.string   "code",       :limit => 4, :null => false
@@ -34,18 +34,31 @@ ActiveRecord::Schema.define(:version => 20110828192636) do
   add_index "contacts", ["name"], :name => "index_contacts_on_name", :unique => true
 
   create_table "invoices", :force => true do |t|
-    t.string   "reference",                                                           :null => false
-    t.date     "dated_on",                                                            :null => false
-    t.integer  "payment_terms",                                      :default => 0,   :null => false
-    t.integer  "contact_id",                                                          :null => false
-    t.decimal  "trade_discount",      :precision => 16, :scale => 8, :default => 0.0, :null => false
-    t.decimal  "settlement_discount", :precision => 16, :scale => 8, :default => 0.0, :null => false
-    t.string   "type",                                                                :null => false
-    t.datetime "created_at",                                                          :null => false
-    t.datetime "updated_at",                                                          :null => false
+    t.string   "reference",                                                                      :null => false
+    t.date     "dated_on",                                                                       :null => false
+    t.integer  "payment_terms",                                                 :default => 7,   :null => false
+    t.integer  "contact_id",                                                                     :null => false
+    t.decimal  "trade_discount_percentage",      :precision => 16, :scale => 8, :default => 0.0, :null => false
+    t.decimal  "settlement_discount_percentage", :precision => 16, :scale => 8, :default => 0.0, :null => false
+    t.string   "type",                                                                           :null => false
+    t.datetime "created_at",                                                                     :null => false
+    t.datetime "updated_at",                                                                     :null => false
   end
 
   add_index "invoices", ["contact_id"], :name => "index_invoices_on_contact_id"
   add_index "invoices", ["reference"], :name => "index_invoices_on_reference", :unique => true
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "category_id",                                                          :null => false
+    t.integer  "invoice_id",                                                           :null => false
+    t.decimal  "quantity",            :precision => 16, :scale => 8, :default => 1.0,  :null => false
+    t.decimal  "vat_rate_percentage", :precision => 16, :scale => 8, :default => 20.0, :null => false
+    t.decimal  "unit_price",          :precision => 16, :scale => 8,                   :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
+  end
+
+  add_index "line_items", ["category_id"], :name => "index_line_items_on_category_id"
+  add_index "line_items", ["invoice_id"], :name => "index_line_items_on_invoice_id"
 
 end

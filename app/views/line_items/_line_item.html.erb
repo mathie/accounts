@@ -1,0 +1,11 @@
+<tr>
+  <td><%= line_item.category.name %></td>
+  <td class="number"><%= line_item.quantity %></td>
+  <td class="number"><%= number_to_percentage line_item.vat_rate_percentage, strip_insignificant_zeros: true %></td>
+  <td class="number"><%= number_to_currency line_item.unit_price %></td>
+  <td class="number"><%= number_to_currency line_item.net_value %></td>
+  <td>
+    <%= link_to 'Edit', [:edit, line_item], class: 'btn small' %>
+    <%= link_to 'Delete', line_item, method: :delete, confirm: 'Are you sure?', class: 'btn small danger' %>
+  </td>
+</tr>

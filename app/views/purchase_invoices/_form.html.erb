@@ -8,8 +8,8 @@
   </div>
   <%= form_text_input f, :text_field, :dated_on, class: 'xlarge', size: 30 %>
   <%= form_text_input f, :text_field, :payment_terms, class: 'xlarge', size: 30 %>
-  <%= form_text_input f, :text_field, :trade_discount, class: 'xlarge', size: 30 %>
-  <%= form_text_input f, :text_field, :settlement_discount, class: 'xlarge', size: 30 %>
+  <%= form_text_input f, :text_field, :trade_discount_percentage, class: 'xlarge', size: 30 %>
+  <%= form_text_input f, :text_field, :settlement_discount_percentage, class: 'xlarge', size: 30 %>
 
   <div class="actions">
     <%= f.submit purchase_invoice.new_record? ? "Create purchase invoice" : "Update purchase invoice", class: 'btn primary' %>
