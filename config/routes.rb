@@ -1,7 +1,7 @@
 Accounts::Application.routes.draw do
   resources :contacts, :categories
 
-  [:purchase_invoices, :sales_invoices].each do |invoice_type|
+  [:purchase_invoices, :purchase_credit_notes, :sales_invoices, :sales_credit_notes].each do |invoice_type|
     resources invoice_type do
       resources :line_items, :only => [ :new ]
     end

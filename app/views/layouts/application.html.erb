@@ -18,8 +18,10 @@
           <h3><%= link_to 'Accounts', root_path %></h3>
 
           <ul>
-            <%= topnav_link_to 'Purchase Invoices', purchase_invoices_path %>
-            <%= topnav_link_to 'Sales Invoices',    sales_invoices_path %>
+            <%= topnav_link_to 'Purchase Invoices',     purchase_invoices_path %>
+            <%= topnav_link_to 'Purchase Credit Notes', purchase_credit_notes_path %>
+            <%= topnav_link_to 'Sales Invoices',        sales_invoices_path %>
+            <%= topnav_link_to 'Sales Credit Notes',    sales_credit_notes_path %>
           </ul>
 
           <ul class="nav secondary-nav">

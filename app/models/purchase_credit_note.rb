@@ -1,0 +1,2 @@
+class PurchaseCreditNote < Invoice
+end
