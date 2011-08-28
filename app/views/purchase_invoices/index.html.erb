@@ -1,19 +1,5 @@
 <h1>Purchase Invoices</h1>
 
-<table class="zebra-striped">
-  <thead>
-    <tr>
-      <th>Reference</th>
-      <th>Dated</th>
-      <th>Due</th>
-      <th>Contact</th>
-      <th class="number">Gross value</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @purchase_invoices %>
-  </tbody>
-</table>
+<%= render 'invoices/table', invoices: @purchase_invoices %>
 
 <p><%= link_to 'Create a new purchase invoice', new_purchase_invoice_path, class: 'btn large primary' %></p>

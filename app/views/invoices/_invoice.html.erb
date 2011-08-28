@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="span6 columns">
+    <table>
+      <tbody>
+        <tr>
+          <th>Contact</th>
+          <td><%= invoice.contact.name %></td>
+        </tr>
+        <tr>
+          <th>Reference</th>
+          <td><%= invoice.reference %></td>
+        </tr>
+        <tr>
+          <th>Dated on</th>
+          <td><%= invoice.dated_on %></td>
+        </tr>
+        <tr>
+          <th>Due on</th>
+          <td><%= invoice.due_on %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th class="number">Quantity</th>
+      <th class="number">VAT Rate</th>
+      <th class="number">Unit Price</th>
+      <th class="number">Net Total</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <% if invoice.trade_discount? %>
+      <tr>
+        <td colspan="4" class="number">Net before trade discount</td>
+        <td class="number"><%= number_to_currency invoice.net_value_before_trade_discount %></td>
+      </tr>
+      <tr>
+        <td colspan="4" class="number">Trade discount <%= number_to_percentage invoice.trade_discount_percentage, strip_insignificant_zeros: true %></td>
+        <td class="number"><%= number_to_currency invoice.trade_discount %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td colspan="4" class="number">Net value</td>
+      <td class="number"><%= number_to_currency invoice.net_value %></td>
+    </tr>
+
+    <tr>
+      <td colspan="4" class="number">VAT at <%= invoice.vat_rate_percentages.map { |rate| number_to_percentage rate, strip_insignificant_zeros: true }.join(', ') %></td>
+      <td class="number"><%= number_to_currency invoice.vat_value %></td>
+    </tr>
+
+    <tr>
+      <td colspan="4" class="number">Total amount payable</td>
+      <td class="number"><%= number_to_currency invoice.gross_value %></td>
+    </tr>
+
+    <% if invoice.settlement_discount? %>
+      <tr>
+        <td colspan="5">
+          Deduct discount of <%= number_to_percentage invoice.settlement_discount_percentage, strip_insignificant_zeros: true %>
+          if paid within <%= invoice.payment_terms %> days.
+        </td>
+      </tr>
+    <% end %>
+  </tfoot>
+  <tbody>
+    <%= render invoice.line_items %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'Edit invoice', [:edit, invoice], class: 'btn large primary' %>
+  <%= link_to 'Add line item', [:new, invoice, :line_item], class: 'btn large primary' %>
+</p>

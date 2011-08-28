@@ -1,0 +1,17 @@
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Dated</th>
+      <th>Due</th>
+      <th>Contact</th>
+      <th class="number">Gross value</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% invoices.each do |invoice| %>
+      <%= render 'invoices/row', invoice: invoice %>
+    <% end %>
+  </tbody>
+</table>
