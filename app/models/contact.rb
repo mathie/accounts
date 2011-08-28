@@ -1,4 +1,6 @@
 class Contact < ActiveRecord::Base
+  default_scope order(:code)
+
   validates :code, uniqueness: true, format: { with: /^[0-9]{4}$/, message: 'must be a four-digit code' }
   validates :name, uniqueness: true, presence: true
 

@@ -1,0 +1,16 @@
+<h1>Contacts</h1>
+
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @contacts %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Create a new contact', new_contact_path, class: 'btn large primary' %></p>

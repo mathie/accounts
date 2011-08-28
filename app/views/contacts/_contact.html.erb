@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to contact.code, contact %></td>
+  <td><%= link_to contact.name, contact %></td>
+  <td>
+    <%= link_to 'Edit', [:edit, contact], class: 'btn small' %>
+    <%= link_to 'Delete', contact, method: :delete, confirm: 'Are you sure?', class: 'btn small danger' %>
+  </td>
+</tr>

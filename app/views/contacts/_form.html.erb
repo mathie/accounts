@@ -1,0 +1,9 @@
+<%= form_for contact do |f| %>
+  <%= form_text_input f, :text_field, :code, disabled: true, class: 'xlarge', size: 30 %>
+  <%= form_text_input f, :text_field, :name, autofocus: true, class: 'xlarge', size: 30 %>
+
+  <div class="actions">
+    <%= f.submit contact.new_record? ? "Create contact" : "Update contact", class: 'btn primary' %>
+    <%= link_to 'Cancel', contacts_path, class: 'btn' %>
+  </div>
+<% end %>
