@@ -1,0 +1,2 @@
+class PurchaseInvoice < Invoice
+end

@@ -18,6 +18,10 @@
           <h3><%= link_to 'Accounts', root_path %></h3>
 
           <ul>
+            <%= topnav_link_to 'Purchase Invoices', purchase_invoices_path %>
+          </ul>
+
+          <ul class="nav secondary-nav">
             <%= topnav_link_to 'Contacts', contacts_path %>
             <%= topnav_link_to 'Categories', categories_path %>
           </ul>

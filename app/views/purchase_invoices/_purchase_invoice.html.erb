@@ -1,0 +1,11 @@
+<tr>
+  <td><%= link_to purchase_invoice.reference, purchase_invoice %></td>
+  <td><%= purchase_invoice.dated_on %></td>
+  <td><%= purchase_invoice.due_on %></td>
+  <td><%= link_to purchase_invoice.contact.name, purchase_invoice.contact %></td>
+  <td class="number"><%= number_to_currency purchase_invoice.gross_value %></td>
+  <td>
+    <%= link_to 'Edit', [:edit, purchase_invoice], class: 'btn small' %>
+    <%= link_to 'Delete', purchase_invoice, method: :delete, confirm: 'Are you sure?', class: 'btn small danger' %>
+  </td>
+</tr>
