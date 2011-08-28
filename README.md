@@ -40,7 +40,9 @@ These are all recorded in their associated books of prime entry:
 
 * Purchase credit notes are Purchases Returns Day Book.
 
-Then there's cash (which could be real cash, or, more likely transactions on a bank account). There are a all the cash transactions that match up with the cash changing hands for an accrual-based thingumie:
+Then there's cash (which could be real cash, or, more likely transactions on a
+bank account). There are a all the cash transactions that match up with the
+cash changing hands for an accrual-based thingumie:
 
 * Sales invoice payment received.
 
@@ -65,7 +67,8 @@ Then there's the direct cash transactions:
 
 These are all recorded in the Cash Book, the other book of prime entry.
 
-In terms of modelling these things, each accrual thingumie (Sales/Purchase Invoice/Credit Note) has several common features:
+In terms of modelling these things, each accrual thingumie (Sales/Purchase
+Invoice/Credit Note) has several common features:
 
 * Some sort of identifier, so we can trace them through the accounts.
 * They belong to a single contact (supplier or client).
