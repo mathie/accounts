@@ -6,6 +6,10 @@ gem 'pg'
 gem 'foreman'
 gem 'thin'
 
+group :development do
+  gem 'heroku', require: false
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -17,5 +21,5 @@ end
 gem 'jquery-rails'
 
 group :test do
-  gem 'turn', :require => false
+  gem 'turn', require: false
 end
