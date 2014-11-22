@@ -100,4 +100,22 @@ totals and memoranda from each and produce:
 * Subsidiary Sales Ledger
 * Subsidiary Purchases Ledger
 
-That's the goal of this app.
+That's the goal of this app. Unfortunately, I never quite got that far. So all that's here is the CRUD operations for contacts, categories, and accrual items. Still, it does model the right VAT behaviour with respect to trade and settlement discounts, so that's interesting I guess.
+
+## Running the app
+
+It just needs Ruby 1.9.3, and PostgreSQL. Install all the gem dependencies with:
+
+    bundle install
+
+then create and migrate the database with:
+
+    createuser -s accounts
+    bundle exec rake db:create:all
+    bundle exec rake db:reset
+
+then you can run the app server locally with:
+
+    foreman start
+
+Enjoy! Pull requests are more than welcome. :)
